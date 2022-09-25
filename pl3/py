@@ -1,0 +1,15 @@
+a=(int(input('Введите целое число \n')))
+b=(int(input('Введите целое число \n')))
+c=(int(input('Введите целое число \n')))
+if 1 <= a <= 3:
+    print ('da')
+else:
+    print('net')
+if 1 <= b <= 3:
+    print('da')
+else:
+    print('net')
+if 1 <= c <= 3:
+    print ('da')
+else:
+    print('net')
