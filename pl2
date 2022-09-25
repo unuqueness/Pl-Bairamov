@@ -1,0 +1,7 @@
+import math
+
+x = float(input('vvedite x'))
+y = float(input('vvedite y'))
+z = float(input('vvedie z'))
+s = (((9 + x**2 - 2*x*y + y**2)**(1./3.)) / (x**2 + y**2 + 2))- math.pow(math.e, math.fabs(x-y)) * math.tan(z)**3
+print("s= {0:.5f}".format(s))
