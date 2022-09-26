@@ -1,0 +1,8 @@
+a=int(input('vvedite a'))
+b=int(input('vvedite b'))
+for i in range(a, b+1):
+    if a < b:
+        print(i)
+else:
+    for i in range(a, b-1, -1):
+        print(i)
