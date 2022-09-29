@@ -1,0 +1,3 @@
+string = "Заменить все двоеточия::::::::".split(":")
+print("%".join(string))
+print(len(string) - 1)
