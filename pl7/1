@@ -1,0 +1,9 @@
+import math
+a = int(input("a:"))
+
+def s(a):
+    s = ((a**2*math.sqrt(3))/4)
+    return s
+print("Найдем площадь шестиугольника")
+S = s(a) * 6
+print(S)
