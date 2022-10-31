@@ -1,0 +1,14 @@
+N = 2
+NN = 3
+A = [
+    [5, 2, 4, 7],
+    [7, 1, 1, 1, 4],
+    [1, 2, 3, 4]]
+for i in range(N):
+    tmp = A[0][i]
+    A[i][0] = A[0][NN-1]
+    A[i][NN-1]=tmp
+for i in range(N):
+    for k in range(NN):
+        print("%2d"%A[i][k], end="")
+    print()
