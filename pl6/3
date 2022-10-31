@@ -1,0 +1,7 @@
+from random import *
+a = [randint(-30, 30) for i in range(10)]
+s = a[0]
+for i in a:
+    if i % 2 == 0 and i > s:
+        s = i
+print(s)
