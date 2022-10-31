@@ -1,0 +1,12 @@
+def f(s):
+    a = 0
+    while s > 0:
+        a += s % 10
+        s = s // 10
+    return a
+b = int(input("введите число"))
+c = 0
+while b > 0:
+    b -= f(b)
+    c += 1
+print(c)
