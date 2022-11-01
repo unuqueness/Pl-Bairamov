@@ -1,0 +1,9 @@
+N = [[1, 5, 9],
+     [2, 6, 8],
+     [3, 6, 16]]
+max = 0
+for i in range(len(N)):
+    for k in range(len(N[i])):
+        if N[i][k] > max:
+            max = N[i][k]
+print(max)
