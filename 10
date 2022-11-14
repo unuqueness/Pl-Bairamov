@@ -1,0 +1,96 @@
+from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+from tkinter import scrolledtext
+from tkinter.ttk import Combobox
+from tkinter.ttk import Radiobutton
+
+wind = Tk()
+wind.title("Байрамов Имран Ренатович")
+wind.geometry("270x260+200+100")
+tab_control = ttk.Notebook(wind)
+a1 = ttk.Frame(tab_control)
+a2 = ttk.Frame(tab_control)
+a3 = ttk.Frame(tab_control)
+tab_control.add(a1, text="Первая")
+tab_control.add(a2, text="Вторая")
+tab_control.add(a3, text="Третья")
+tab_control.pack(expand=1, fill='both')
+
+def calc_add():
+    if combo.get() == "+":
+        label1.configure(text=int(spin.get()) + int(spin1.get()))
+    elif combo.get() == "-":
+        label1.configure(text=int(spin.get()) - int(spin1.get()))
+    elif combo.get() == "*":
+        label1.configure(text=int(spin.get()) * int(spin1.get()))
+    elif combo.get() == "/" and spin1.get() == "0":
+        label1.configure(text="00")
+    else:
+        label1.configure(text=int(spin.get()) / int(spin1.get()))
+
+calc = IntVar()
+calc.set(0)
+spin = Spinbox(a1, from_=-100000, to=100000, width=10, justify="center", textvariable=calc)
+spin.grid(column=0, row=0)
+combo = Combobox(a1, justify="center", width=5)
+combo["values"] = ("+", "-", "*", "/")
+combo.current(0)
+combo.grid(column=1, row=0)
+var1 = IntVar()
+var1.set(0)
+spin1 = Spinbox(a1, from_=-100000, to=100000, width=10, justify="center", textvariable=var1)
+spin1.grid(column=2, row=0)
+btn = Button(a1, text="=", command=calc_add)
+btn.grid(column=3, row=0)
+label1 = ttk.Label(a1, text="0")
+label1.grid(column=4, row=0)
+
+def clecked1():
+    if selected.get() == 0: messagebox.showinfo("Вы выбрали", "Первый")
+    if selected.get() == 1: messagebox.showinfo("Вы выбрали", "Второй")
+    if selected.get() == 2: messagebox.showinfo("Вы выбрали", "Третий")
+
+selected = IntVar()
+selected.set(0)
+rad1 = Radiobutton(a2, text="Первый", value=0, variable=selected)
+rad2 = Radiobutton(a2, text="Второй", value=1, variable=selected)
+rad3 = Radiobutton(a2, text="Третий", value=2, variable=selected)
+rad1.grid(column=0, row=0)
+rad2.grid(column=1, row=0)
+rad3.grid(column=2, row=0)
+btn1 = Button(a2, text="Нажмите", command=clecked1)
+btn1.grid(column=0, row=1)
+
+
+def clecked2():
+    with open('text.txt', 'r') as file:
+        text.delete(1.0, END)
+        text.insert(1.0, file.read())
+    file.close()
+
+
+def clecked3():
+    with open('text.txt', 'w') as file1:
+        file1.write(text.get(1.0, END))
+    file1.close()
+
+selected = IntVar()
+selected.set(0)
+rad1 = Radiobutton(a2, text="Первый", value=0, variable=selected)
+rad2 = Radiobutton(a2, text="Второй", value=1, variable=selected)
+rad3 = Radiobutton(a2, text="Третий", value=2, variable=selected)
+rad1.grid(column=0, row=0)
+rad2.grid(column=1, row=0)
+rad3.grid(column=2, row=0)
+btn1 = Button(a2, text="Нажмите", command=clecked1)
+btn1.grid(column=0, row=1)
+
+text = scrolledtext.ScrolledText(a3, width=50, height=10, bg="white", fg="black")
+text.grid(row=0, column=0, columnspan=2, padx=35)
+btn2 = Button(a3, text="Загузить", command=clecked2)
+btn2.grid(row=1, column=0, pady=10)
+btn3 = Button(a3, text="Сохранить", command=clecked3)
+btn3.grid(row=1, column=1)
+
+wind.mainloop()
