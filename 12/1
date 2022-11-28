@@ -1,0 +1,10 @@
+n = int(input())
+def prov(n):
+    for i in range(2, n):
+        if n % i == 0:
+            otvet = 'NO'
+            break
+        else:
+            otvet = 'YES'
+    return(otvet)
+print(prov(n))
