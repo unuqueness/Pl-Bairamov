@@ -1,0 +1,37 @@
+from tkinter import ttk
+import json
+from tkinter import*
+from pprint import pprint
+from tkinter.ttk import Combobox
+from tkinter.ttk import Radiobutton
+from tkinter import messagebox
+import requests
+
+def git():
+    N = a.get()
+    if N != '':
+        user_data = requests.get(N).json()
+        pprint(user_data)
+        us_data = {'company' :None, 'created_at':None, 'email':None, 'id':0, 'name':None, 'url':None}
+        for i in user_data:
+            if i == "company" or i == "id" or i == "created_at" or i == 'email' or i == 'name' or i == 'url':
+                us_data[i] = user_data[i]
+        with open("data_file.json", "w") as write_file:
+            json.dump(us_data, write_file)
+
+
+wind = Tk()
+wind.geometry("400x250+100+200")
+wind.title("Консоль для ссылки")
+
+a = Entry(wind, width = 50)
+a.grid(column = 0, row = 1)
+
+b = Button(wind, text = "Ok", command = git)
+b.grid(column = 1, row = 1)
+
+wind.mainloop()
+
+
+
+
